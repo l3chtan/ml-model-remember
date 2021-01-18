@@ -110,7 +110,7 @@ def test_cap_reconstruction(res_n=5, p=None):
         err += e
         sim += s
 
-    print err / mal_n, sim / mal_n
+    print(err / mal_n, sim / mal_n)
 
 
 def test_cor_reconstruction(res_n=5, cr=None):
@@ -156,7 +156,7 @@ def test_cor_reconstruction(res_n=5, cr=None):
         err += min([e1, e2])
         sim += max([s1, s2])
 
-    print err / n_hidden_data, sim / n_hidden_data
+    print(err / n_hidden_data, sim / n_hidden_data)
 
 
 def test_sgn_reconstruction(res_n=5, cr=None):
@@ -173,9 +173,9 @@ def test_sgn_reconstruction(res_n=5, cr=None):
     param_values = load_params(SGN, res_n=res_n, hp=cr)
     params = np.concatenate([p.flatten() for p in param_values if p.ndim > 1])
     total_params = len(params)
-    print total_params
+    print(total_params)
     n_hidden_data = total_params / int(hidden_data_dim) / 8
-    print n_hidden_data
+    print(n_hidden_data)
 
     # get the signs as bits
     bits = np.sign(params[: n_hidden_data * int(hidden_data_dim) * 8])
@@ -202,7 +202,7 @@ def test_sgn_reconstruction(res_n=5, cr=None):
         err += e
         sim += s
 
-    print err / n_hidden_data, sim / n_hidden_data
+    print(err / n_hidden_data, sim / n_hidden_data)
 
 
 def test_lsb_acc(res_n=5, bits=16, n_data=1000):
@@ -250,7 +250,7 @@ def test_lsb_acc(res_n=5, bits=16, n_data=1000):
         test_acc += acc
         test_batches += 1
     final_acc = test_acc / test_batches / 500 * 100
-    print "LSB {} test accuracy:\t\t{:.2f} %\n".format(bits, final_acc)
+    print("LSB {} test accuracy:\t\t{:.2f} %\n".format(bits, final_acc))
 
 
 def load_params(attack, res_n=5, hp=None):

@@ -1,6 +1,6 @@
 from Crypto.Cipher import AES
 from PIL import Image
-from cStringIO import StringIO as BytesIO
+from io import BytesIO
 import numpy as np
 import gzip
 
@@ -19,8 +19,8 @@ def compress_image(raw_data, n=5e5, bits=16):
     for x in raw_data:
         img = Image.fromarray(x)
         img.save(buff, "png")
-    
-    print "encoded size: ", len(raw_data.flatten()) * 8 / 1e6
+
+    print("encoded size: ", len(raw_data.flatten()) * 8 / 1e6)
     comp_buff = BytesIO()
     with gzip.GzipFile(fileobj=comp_buff, mode="w") as f:
         f.write(buff.getvalue())

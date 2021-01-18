@@ -53,7 +53,7 @@ def iterate_minibatches(inputs, targets, batchsize, shuffle=False, augment=False
             # and do random cropping of 32x32
             padded = np.pad(inputs[excerpt], ((0, 0), (0, 0), (4, 4), (4, 4)), mode='constant')
             random_cropped = np.zeros(inputs[excerpt].shape, dtype=np.float32)
-            crops = np.random.random_integers(0, high=8, size=(batchsize, 2))
+            crops = np.random.randint(0, 8 + 1) #deprecated: random_integers(0, high=8, size=(batchsize, 2))
             for r in range(batchsize):
                 random_cropped[r, :, :, :] = padded[r, :, crops[r, 0]:(crops[r, 0] + 32),
                                              crops[r, 1]:(crops[r, 1] + 32)]
